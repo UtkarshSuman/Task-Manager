@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs');  %>
+<!-- tasks is database and works is table -->
+  <div class="headingBox" id="heading">
+    <h1>
+      <%= listTitle %>
+    </h1>
+  </div>    
+    <div class="box">
+      <% if(!loggedInUser){ %>
+      <div id="logindiv">
+        <p id="authTitle">USER AUTHENTICATION</p>
+        <form action="/user" method="post">
+          <label for="username">Name</label>
+          <input type="text" name="username" placeholder="Your name">
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="password">
+          <input type="submit" value="Login">
+        </form>
+      </div>
+      <% } else { %>    
+          <div id="welcomediv">
+          <h2>Hello, <%= loggedInUser %> 👋</h2>
+      <% } %>
+
+
+      <h2 id="tasksTagLine">TASKS</h2>
+      <% for(let item of taskItems){ %>
+        <div class="item">
+          <form action="/delete" method="post">
+            <input type="checkbox" name="deleteItemId" onchange="this.form.submit()" value="<%= item.id %>">
+          </form>
+          <p id="title<%=item.id%>">
+            <%= item.title %>
+          </p>
+          <form class="edit" action="/edit" method="post">
+          <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+          <input id="input<%=item.id%>" type="text" name="updatedItemTitle" value="<%= item.title %>" autocomplete="off"
+            autofocus hidden />
+          <button id="done<%=item.id%>" class="edit" type="submit" hidden><img class="icon"
+              src="/assets/icons/check-solid.svg" alt="tick image"></button>
+        </form>
+        <button id="edit<%=item.id%>" class="edit" onclick="handler('<%=item.id%>')"><img class="icon"
+            src="/assets/icons/pencil-solid.svg" alt="pencil image"></button>
+      </div>
+      <% } %>
+
+        <form class="item" action="/add" method="post">
+          <input type="text" name="newTask" placeholder="New Task" autocomplete="off" autofocus="true" />
+          <button class="add" type="submit" name="list" value=<%=listTitle %> >+</button>
+        </form>
+    </div>  
+
+
+<%- include('partials/footer.ejs'); -%>  
