@@ -6,13 +6,10 @@ Includes a special Guest Mode where users can add tasks without registering.
 🚀 Features
 ✅ User Authentication
 
-Register new users
-
-Secure login using bcrypt hashing
-
-Sessions using express-session
-
-Persistent login (stays logged in until session expires)
+1.Register new users
+2.Secure login using bcrypt hashing
+3.Sessions using express-session
+4,Persistent login (stays logged in until session expires)
 
 ✅ Task Management
 
