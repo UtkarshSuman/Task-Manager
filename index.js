@@ -3,14 +3,17 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import session from "express-session";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
-const port = 3000;
-const saltRounds = 10;
+const port = process.env.PORT;
+const saltRounds = parseInt(process.env.SALT_ROUNDS);
+
 
 app.use(
   session({
-    secret: "Ramprasad",
+    secret: process.env.SESSION_SECRET ,
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 24 * 60 * 60 * 1000 }
@@ -18,11 +21,11 @@ app.use(
 );
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "tasks",
-  password: "utkarsh@2003",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  port: process.env.DB_PORT,
 });
 db.connect();
 
