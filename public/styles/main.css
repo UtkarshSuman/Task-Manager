@@ -106,6 +106,74 @@ input[type="text"]:focus {
   box-shadow: inset 0 -3px 0 0 #a683e3;
 }
 
+#logindiv {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 22px;
+  border: 1px solid rgba(15,23,42,0.05);
+  box-shadow: 0 4px 16px rgba(2,6,23,0.04);
+}
+
+
+
+/* form basics */
+#logindiv form {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+}
+
+/* labels */
+#logindiv label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display:block;
+}
+
+/* inputs */
+#logindiv input[type="text"],
+#logindiv input[type="password"] {
+  width: 94%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(15,23,42,0.08);
+  background: #fbfdff;
+  font-size: 0.95rem;
+  transition: box-shadow 150ms ease, border-color 150ms ease, transform 80ms ease;
+  outline: none;
+}
+
+#logindiv input[type="text"]::placeholder,
+#logindiv input[type="password"]::placeholder {
+  color: #9aa3b2;
+}
+
+/* focus state */
+#logindiv input[type="text"]:focus,
+#logindiv input[type="password"]:focus {
+  border-color: color-mix(in srgb, var(--accent) 70%, #fff);
+  box-shadow: 0 6px 18px rgba(37,99,235,0.08);
+  transform: translateY(-1px);
+}
+
+/* submit button */
+#logindiv input[type="submit"]{
+  background:#a683e3;
+  color: white;
+  border: none;
+  margin-top: 14px;
+  margin-right: 15px;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.98rem;
+}
+
+ #logindiv input[type="submit"]:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37,99,235,0.12);
+} 
 
 
 footer {

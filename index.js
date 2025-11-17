@@ -144,7 +144,7 @@ app.post("/edit", async (req, res) => {
 
 
 // CONSTANT USER 
-app.get("/constant", (req, res) => {
+app.post("/constant", (req, res) => {
   req.session.userId = 1;
   req.session.username = "Guest";
   res.redirect("/");

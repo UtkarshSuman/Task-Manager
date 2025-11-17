@@ -10,11 +10,16 @@
       <div id="logindiv">
         <p id="authTitle">USER AUTHENTICATION</p>
         <form action="/user" method="post">
+          <div clas="content">
           <label for="username">Name</label>
-          <input type="text" name="username" placeholder="Your name">
-          <label for="password">Password</label>
-          <input type="password" name="password" placeholder="password">
+          <input type="text" autocomplete="off" name="username" placeholder="Your name">
+          <label  id="password" for="password">Password</label>
+          <input type="password" name="password" placeholder="password" >
+          <form action="/constant" method="post"><br> 
+          <input type="submit" value="Guest">          
+          </form>          
           <input type="submit" value="Login">
+          </div>
         </form>
       </div>
       <% } else { %>    
