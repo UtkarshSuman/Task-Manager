@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
 
 
@@ -20,20 +20,14 @@ app.use(
   })
 );
 
-
-
-
 const db = new pg.Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  port: process.env.DB_PORT,
 });
-
-db.connect()
-  .then(() => console.log("Connected to Render PostgreSQL"))
-  .catch(err => console.error("DB Connection Error: ", err));
-
+db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
