@@ -20,9 +20,8 @@ app.use(
   })
 );
 
-import pg from "pg";
 
-import pg from "pg";
+
 
 const db = new pg.Client({
   connectionString: process.env.DATABASE_URL,
